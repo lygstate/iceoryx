@@ -125,9 +125,9 @@ class RouDi
     static uint64_t getUniqueSessionIdForProcess() noexcept;
 
   private:
-    void processRuntimeMessages() noexcept;
+    void processRuntimeMessages();
 
-    void monitorAndDiscoveryUpdate() noexcept;
+    void monitorAndDiscoveryUpdate();
 
     cxx::GenericRAII m_unregisterRelativePtr{[] { rp::BaseRelativePointer::unregisterAll(); }};
     bool m_killProcessesInDestructor;

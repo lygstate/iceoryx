@@ -175,7 +175,7 @@ class ListenerImpl
   private:
     class Event_t;
 
-    void threadLoop() noexcept;
+    void threadLoop();
     cxx::expected<uint32_t, ListenerError> addEvent(void* const origin,
                                                     void* const userType,
                                                     const uint64_t eventType,

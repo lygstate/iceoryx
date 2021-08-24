@@ -80,7 +80,7 @@ inline bool PeriodicTask<T>::isActive() const noexcept
 }
 
 template <typename T>
-inline void PeriodicTask<T>::run() noexcept
+inline void PeriodicTask<T>::run()
 {
     posix::SemaphoreWaitState waitState = posix::SemaphoreWaitState::NO_TIMEOUT;
     do

@@ -119,7 +119,7 @@ class PeriodicTask
     bool isActive() const noexcept;
 
   private:
-    void run() noexcept;
+    void run();
 
   private:
     T m_callable;
