@@ -148,7 +148,7 @@ void RouDi::cyclicUpdateHook() noexcept
     // default implementation; do nothing
 }
 
-void RouDi::monitorAndDiscoveryUpdate() noexcept
+void RouDi::monitorAndDiscoveryUpdate()
 {
     while (m_runMonitoringAndDiscoveryThread)
     {
@@ -160,7 +160,7 @@ void RouDi::monitorAndDiscoveryUpdate() noexcept
     }
 }
 
-void RouDi::processRuntimeMessages() noexcept
+void RouDi::processRuntimeMessages()
 {
     runtime::IpcInterfaceCreator roudiIpcInterface{IPC_CHANNEL_ROUDI_NAME};
 
