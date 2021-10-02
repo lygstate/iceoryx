@@ -24,25 +24,14 @@
 
 int iox_pthread_setname_np(iox_pthread_t thread, const char* name)
 {
-    std::mbstate_t state = std::mbstate_t();
-    uint64_t length = std::mbsrtowcs(nullptr, &name, 0, &state) + 1U;
-    std::vector<wchar_t> wName(length);
-    std::mbsrtowcs(wName.data(), &name, length, &state);
-
-    return Win32Call(SetThreadDescription, thread, wName.data()).error;
+    return 0;
 }
 
 int iox_pthread_getname_np(iox_pthread_t thread, char* name, size_t len)
 {
-    wchar_t* wName;
-    auto result = Win32Call(GetThreadDescription, thread, &wName).error;
-    if (result == 0)
-    {
-        wcstombs(name, wName, len);
-        LocalFree(wName);
-    }
+    name[0] = '\0';
 
-    return result;
+    return 0;
 }
 
 struct win_routine_args
