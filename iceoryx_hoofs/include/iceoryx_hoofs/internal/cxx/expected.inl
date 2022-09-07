@@ -278,7 +278,7 @@ inline expected<ErrorType>::expected(error<ErrorType>&& errorValue) noexcept
 {
 }
 
-#if defined(_WIN32)
+#if defined(_MSC_VER) && !defined(__clang__)
 template <typename ErrorType>
 template <typename ValueType>
 inline expected<ErrorType>::expected(const expected<ValueType, ErrorType>& rhs) noexcept

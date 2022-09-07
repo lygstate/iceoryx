@@ -159,7 +159,7 @@ class IOX_NO_DISCARD expected<ErrorType> : public FunctionalInterface<expected<E
     ///         or the error value - depending on what is stored in the expected
     expected(expected&& rhs) noexcept;
 
-#if defined(_WIN32)
+#if defined(_MSC_VER) && !defined(__clang__)
     /// @brief copy conversion constructor to convert an expected which contains value and
     ///        error type to an expected which contains only an error
     template <typename ValueType>
