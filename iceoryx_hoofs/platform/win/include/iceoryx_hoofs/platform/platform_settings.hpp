@@ -17,6 +17,7 @@
 #define IOX_HOOFS_WIN_PLATFORM_PLATFORM_SETTINGS_HPP
 
 #include <cstdint>
+#include <type_traits>
 
 namespace iox
 {
@@ -39,8 +40,17 @@ constexpr const char IOX_LOCK_FILE_PATH_PREFIX[] = "C:\\Windows\\Temp\\";
 constexpr uint64_t IOX_MAX_FILENAME_LENGTH = 128U;
 constexpr uint64_t IOX_MAX_PATH_LENGTH = 255U;
 
+#if defined(_MSC_VER) && !defined(_HAS_DEPRECATED_RESULT_OF)
+template <typename C, typename... Cargs>
+using invoke_result = std::result_of<C(Cargs...)>;
+template <typename C, typename... Cargs>
+using invoke_result_t = std::result_of_t<C(Cargs...)>;
+#else
 template <typename C, typename... Cargs>
 using invoke_result = std::invoke_result<C, Cargs...>;
+template <typename C, typename... Cargs>
+using invoke_result_t = std::invoke_result_t<C, Cargs...>;
+#endif
 
 namespace win32
 {
